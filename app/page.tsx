@@ -1,65 +1,162 @@
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Home() {
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const [data, setData] = useState({
+    resource: "",
+    quantity: 0,
+    location: "",
+    urgency: "",
+    suggestion: "",
+  });
+
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
+    e.preventDefault();
+
+    setLoading(true);
+
+    await new Promise((resolve) => setTimeout(resolve, 1200));
+
+    const response = await fetch("/api/triage", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ input }),
+    });
+
+    const res = await response.json();
+
+    setData(res.data);
+    setLoading(false);
+  };
+
+  const getUrgencyColor = (urgency: string) => {
+    switch (urgency.toLowerCase()) {
+      case "high":
+        return "bg-red-500";
+      case "medium":
+        return "bg-yellow-500";
+      case "low":
+        return "bg-green-500";
+      default:
+        return "bg-gray-500";
+    }
+  };
+
+  const getResourceIcon = (resource: string) => {
+    switch (resource.toLowerCase()) {
+      case "food":
+        return "🍱";
+      case "blankets":
+        return "🧥";
+      case "medicine":
+        return "💊";
+      case "water":
+        return "💧";
+      default:
+        return "📦";
+    }
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex flex-col items-center p-8">
+      <h1 className="text-5xl font-bold text-blue-800 mb-10 text-center">
+        Nexus: Smart Resource Bridge
+      </h1>
+
+      <div className="w-full max-w-3xl bg-white/80 backdrop-blur-lg p-8 rounded-3xl shadow-2xl border border-blue-100">
+        <form onSubmit={handleSubmit}>
+          <textarea
+            className="w-full h-40 p-5 border border-gray-300 rounded-2xl mb-6 text-black text-lg outline-none focus:ring-4 focus:ring-blue-200 resize-none"
+            placeholder="Describe what you have or need..."
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+
+          <button
+            type="submit"
+            disabled={loading}
+            className={`w-full py-4 rounded-2xl text-white font-semibold text-lg transition-all duration-300 ${
+              loading
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-blue-600 hover:bg-blue-700"
+            }`}
+          >
+            {loading ? "Analyzing with AI..." : "Analyze with AI"}
+          </button>
+        </form>
+      </div>
+
+      {!data.resource && (
+        <div className="mt-10 text-center text-gray-600 max-w-xl">
+          <p className="text-lg">
+            Describe available resources or urgent needs and let AI classify
+            urgency, location, and recommended action.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      )}
+
+      {data.resource && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mt-10 w-full max-w-3xl bg-white rounded-3xl shadow-2xl p-8"
+        >
+          <div className="flex items-center gap-5 mb-8">
+            <div className="text-5xl">
+              {getResourceIcon(data.resource)}
+            </div>
+
+            <div>
+              <h2 className="text-3xl font-bold capitalize text-blue-800">
+                {data.resource}
+              </h2>
+
+              <p className="text-gray-500 text-sm">
+                AI Classified Resource
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-800">
+            <div className="bg-blue-50 p-4 rounded-2xl">
+              <p className="text-sm text-gray-500">Quantity</p>
+              <p className="text-2xl font-bold">{data.quantity}</p>
+            </div>
+
+            <div className="bg-blue-50 p-4 rounded-2xl">
+              <p className="text-sm text-gray-500">Location</p>
+              <p className="text-xl font-semibold">{data.location}</p>
+            </div>
+
+            <div className="bg-blue-50 p-4 rounded-2xl">
+              <p className="text-sm text-gray-500 mb-2">Urgency</p>
+
+              <span
+                className={`px-4 py-2 rounded-full text-white text-sm font-semibold ${getUrgencyColor(
+                  data.urgency
+                )}`}
+              >
+                {data.urgency}
+              </span>
+            </div>
+
+            <div className="bg-blue-50 p-4 rounded-2xl">
+              <p className="text-sm text-gray-500">Suggested Action</p>
+              <p className="text-lg font-medium">{data.suggestion}</p>
+            </div>
+          </div>
+        </motion.div>
+      )}
     </div>
   );
 }

@@ -20,17 +20,179 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## 🚀 Features
 
-To learn more about Next.js, take a look at the following resources:
+* AI Resource Classification
+* Urgency Detection System
+* Suggested Action Recommendation
+* Quantity & Location Extraction
+* Dynamic Resource Icons
+* Responsive Web Dashboard
+* Animated Result UI
+* Mock AI Engine for Prototype Flow
+* Cloud Deployment Ready
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🧠 Problem Statement
 
-## Deploy on Vercel
+Large amounts of usable resources are wasted because there is no fast and intelligent coordination system connecting donors, NGOs, volunteers, and communities.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Nexus solves this by providing an AI-assisted platform that identifies, classifies, and organizes resources for better humanitarian coordination.
+
+---
+
+## ⚙️ Tech Stack
+
+### Frontend
+
+* Next.js
+* React
+* TypeScript
+* Tailwind CSS
+* Framer Motion
+
+### Backend
+
+* Next.js API Routes
+* Mock AI Processing Layer
+
+### AI Layer
+
+* Google Gemini Compatible Architecture
+* NLP-style Resource Classification
+* Structured JSON Extraction
+
+### Deployment
+
+* Vercel
+
+---
+
+## 📦 Installation
+
+Clone repository:
+
+```bash
+git clone https://github.com/YOUR_USERNAME/nexus-smart-resource-bridge.git
+```
+
+Move into project:
+
+```bash
+cd nexus-smart-resource-bridge
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run locally:
+
+```bash
+npm run dev
+```
+
+Open:
+
+```bash
+http://localhost:3000
+```
+
+---
+
+## 🧩 Project Structure
+
+```bash
+app/
+ ├── api/
+ │    └── triage/
+ │         └── route.ts
+ ├── page.tsx
+ ├── layout.tsx
+ └── globals.css
+```
+
+---
+
+## 🔁 How It Works
+
+```text
+User Input
+↓
+Natural Language Processing
+↓
+Resource Classification
+↓
+Urgency Detection
+↓
+Suggested Action
+↓
+Structured Result Display
+```
+
+---
+
+## 📸 MVP Features
+
+Users can:
+
+* Describe available resources
+* Submit AI analysis request
+* View structured output
+* Understand urgency level
+* Receive suggested next action
+
+---
+
+## 🔮 Future Development
+
+* Authentication & Role-Based Access
+* NGO Matching System
+* Real-Time Notifications
+* Volunteer Coordination
+* Geo-location Mapping
+* Community Impact Dashboard
+* Cloud Database Integration
+* Multi-language Support
+
+---
+
+## ☁️ Deployment
+
+Deploy easily with Vercel:
+
+1. Push project to GitHub
+2. Import repository into Vercel
+3. Deploy automatically
+
+---
+
+## 🌍 Social Impact
+
+Nexus supports:
+
+* Resource Waste Reduction
+* Community Support Networks
+* Emergency Response Coordination
+* Sustainable Urban Resource Sharing
+
+---
+
+## 👥 Team
+
+Project Name: Nexus: Smart Resource Bridge
+
+Built for Solution Challenge / Hackathon Submission.
+
+---
+
+## 📄 License
+
+This project is created for educational and hackathon purposes.
+Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
