@@ -1,0 +1,29 @@
+[debug] [2026-04-28T16:49:43.985Z] ----------------------------------------------------------------------
+[debug] [2026-04-28T16:49:44.018Z] Command:       C:\nvm4w\nodejs\node.exe C:\nvm4w\nodejs\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions
+[debug] [2026-04-28T16:49:44.019Z] CLI Version:   15.15.0
+[debug] [2026-04-28T16:49:44.019Z] Platform:      win32
+[debug] [2026-04-28T16:49:44.019Z] Node Version:  v24.0.2
+[debug] [2026-04-28T16:49:44.020Z] Time:          Tue Apr 28 2026 22:19:44 GMT+0530 (India Standard Time)
+[debug] [2026-04-28T16:49:44.021Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-04-28T16:50:00.938Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-04-28T16:50:00.939Z] > authorizing via signed-in user (siddharthchauhan2818@gmail.com)
+[debug] [2026-04-28T16:50:00.939Z] [iam] checking project nexus-2e3e1 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2026-04-28T16:50:00.940Z] Checked if tokens are valid: true, expires at: 1777395950925
+[debug] [2026-04-28T16:50:00.941Z] Checked if tokens are valid: true, expires at: 1777395950925
+[debug] [2026-04-28T16:50:00.941Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/nexus-2e3e1:testIamPermissions [none]
+[debug] [2026-04-28T16:50:00.941Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/nexus-2e3e1:testIamPermissions  x-goog-user-project=nexus-2e3e1
+[debug] [2026-04-28T16:50:00.941Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/nexus-2e3e1:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2026-04-28T16:50:02.525Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/nexus-2e3e1:testIamPermissions 200
+[debug] [2026-04-28T16:50:02.526Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/nexus-2e3e1:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2026-04-28T16:50:02.527Z] Checked if tokens are valid: true, expires at: 1777395950925
+[debug] [2026-04-28T16:50:02.528Z] Checked if tokens are valid: true, expires at: 1777395950925
+[debug] [2026-04-28T16:50:02.528Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/nexus-2e3e1/serviceAccounts/nexus-2e3e1@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2026-04-28T16:50:02.528Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/nexus-2e3e1/serviceAccounts/nexus-2e3e1@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2026-04-28T16:50:02.948Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/nexus-2e3e1/serviceAccounts/nexus-2e3e1@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2026-04-28T16:50:02.949Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/nexus-2e3e1/serviceAccounts/nexus-2e3e1@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'nexus-2e3e1'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint

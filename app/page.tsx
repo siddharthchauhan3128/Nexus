@@ -24,18 +24,34 @@ export default function Home() {
 
     await new Promise((resolve) => setTimeout(resolve, 1200));
 
-    const response = await fetch("/api/triage", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ input }),
-    });
+    const lowerInput = input.toLowerCase();
 
-    const res = await response.json();
+    let resource = "food";
 
-    setData(res.data);
+    if (lowerInput.includes("blanket")) {
+      resource = "blankets";
+    } else if (lowerInput.includes("water")) {
+      resource = "water";
+    } else if (lowerInput.includes("medicine")) {
+      resource = "medicine";
+    }
+
+    const mockResponse = {
+      resource,
+      quantity: 10,
+      location: "nearby area",
+      urgency: "medium",
+      suggestion:
+        resource === "blankets"
+          ? "Send blankets to shelter"
+          : resource === "water"
+          ? "Coordinate water distribution"
+          : "Contact nearby NGO",
+    };
+
+    setData(mockResponse);
     setLoading(false);
+
   };
 
   const getUrgencyColor = (urgency: string) => {
