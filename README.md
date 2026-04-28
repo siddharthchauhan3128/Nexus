@@ -162,11 +162,17 @@ Users can:
 
 ## ☁️ Deployment
 
-Deploy easily with Vercel:
+Deploy easily with Firebase Hosting:
 
 1. Push project to GitHub
-2. Import repository into Vercel
-3. Deploy automatically
+2. Build the Next.js application
+3. Configure Firebase Hosting
+4. Deploy using Firebase CLI
+
+```bash
+npm run build
+firebase deploy
+```
 
 ---
 
