@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import ProtectedRoute from "@/components/Protectedroute";
 
 export default function Home() {
   const [input, setInput] = useState("");
@@ -83,7 +84,8 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex flex-col items-center p-8">
+    <ProtectedRoute>
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex flex-col items-center p-8">
       <h1 className="text-5xl font-bold text-blue-800 mb-10 text-center">
         Nexus: Smart Resource Bridge
       </h1>
@@ -174,5 +176,6 @@ export default function Home() {
         </motion.div>
       )}
     </div>
+    </ProtectedRoute>
   );
 }
