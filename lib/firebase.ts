@@ -1,9 +1,9 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 const firebaseConfig = {
-  apiKey: "AIzaSyDkiN3ShjbtmOpKlSpGhOz_5fDlHzqynYI",
-  authDomain: "nexus-2e3e1.firebaseapp.com",
-  projectId: "nexus-2e3e1",
+  apiKey: process.env.api_key,
+  authDomain: process.env.auth_domain,
+  projectId: process.env.project_Id,
   storageBucket: "nexus-2e3e1.firebasestorage.app",
   messagingSenderId: "1036315885671",
   appId: "1:1036315885671:web:10c63d32de6fe8a9e714c2",
